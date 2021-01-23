@@ -11,7 +11,7 @@ void setup()
 
 void loop()
 {
-  String phrase = "Envoi du mot Sending";
+  String phrase = "Message";
   phrase += count;
   Serial.println(phrase);
   xbee.println(phrase);
