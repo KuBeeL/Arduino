@@ -122,6 +122,9 @@ void Trad(float n){
   if(n == 38){
     Serial.println('&'); //Annonce fin de transmission
   }
+  if(n == 58){
+    Serial.print(':'); //Annonce fin de transmission
+  }
 } 
 void setup()
 {
