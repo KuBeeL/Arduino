@@ -3,7 +3,7 @@ SoftwareSerial xbee(2, 3);
 
 void Trad(float n){
   if(n == 10){
-    Serial.println('');
+    Serial.println(' ');
   }
   if(n == 97){
     Serial.print('a');
@@ -116,17 +116,14 @@ void Trad(float n){
   if(n == 32){
     Serial.print(' ');
   }
-  }
   if(n == 124){
     Serial.print('|');
-  }
   }
   if(n == 46){
     Serial.print('.');
   }
-  }
   if(n == 38){
-    Serial.print('&');
+    Serial.print('&'); //Annonce fin de transmission
   }
 } 
 void setup()
