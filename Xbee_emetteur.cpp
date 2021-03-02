@@ -17,9 +17,9 @@ void loop()
   int valeurLue5 = analogRead(entreeAnalogique5);
   int valeurLue10 = analogRead(entreeAnalogique10);
   int valeurLue30 = analogRead(entreeAnalogique30);
-  float tensionLue5 = map(valeurLue, 0, 1023, 0, 500);
-  float tensionLue10 = map(valeurLue, 0, 1023, 0, 1000);
-  float tensionLue30 = map(valeurLue, 0, 1023, 0, 3000);
+  float tensionLue5 = map(valeurLue5, 0, 1023, 0, 500);
+  float tensionLue10 = map(valeurLue10, 0, 1023, 0, 1000);
+  float tensionLue30 = map(valeurLue30, 0, 1023, 0, 3000);
   
   float tensionLue5 /= 100.0;
   float tensionLue10 /= 100.0;
