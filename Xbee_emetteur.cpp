@@ -1,6 +1,6 @@
 #define entreeAnalogique5 1
-#define entreeAnalogique10 1
-#define entreeAnalogique30 1
+#define entreeAnalogique10 2
+#define entreeAnalogique30 3
 #include <SoftwareSerial.h>
 SoftwareSerial xbee(2, 3);
 int count;
