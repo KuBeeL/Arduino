@@ -3,12 +3,12 @@
 #define entreeAnalogique30 3
 #include <SoftwareSerial.h>
 SoftwareSerial xbee(2, 3);
-int nombre = 100;
+int nombre = 100; //Nombre de données souhaitées
 float donnees5[100];
 float donnees10[100];
 float donnees30[100];
 
-void acquisition()
+void acquisition() // gère l'acquisition des données pour les mettre dans les array
 {
   for (byte i = 0; i <= nombre; i = i + 1) {
   int valeurLue5 = analogRead(A1);
@@ -35,8 +35,8 @@ void setup()
 {
     xbee.begin(9600);                 
     Serial.begin(9600);
-    acquisition();
-    for (byte i = 0; i < nombre; i = i + 1) {
+    acquisition(); //acquisition des données
+    for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
     Serial.println(donnees5[i]);
     }
     Serial.println("----------");
