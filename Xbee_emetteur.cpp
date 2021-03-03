@@ -39,12 +39,7 @@ void setup()
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
     Serial.println(donnees5[i]);
     }
-    Serial.println("----------");
-    /*
-    Serial.println(donnees5[2]);
-    Serial.println(donnees10[2]);                         
-    Serial.println(donnees30[2]); 
-    */   
+    Serial.println("----------");  
 }
 
 void loop()
