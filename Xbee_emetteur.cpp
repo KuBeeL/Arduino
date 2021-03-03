@@ -14,7 +14,10 @@ void setup()
 
 void loop()
 {
-  analogWrite(A4, 500);
+  analogWrite(A4, 1023);
+  delay(100);
+  analogWrite(A4, 0);
+  delay(100);
   int valeurLue5 = analogRead(A1);
   int valeurLue10 = analogRead(A2);
   int valeurLue30 = analogRead(A3);
@@ -40,6 +43,13 @@ void loop()
   Serial.print(tensionLue30);
   Serial.println(" V");
   Serial.println("-----------");
-  //xbee.println(tensionLue);
+  xbee.print(tensionLue5);
+  xbee.print("&");
+  xbee.print(tensionLue10);
+  xbee.print("&");  
+  xbee.print(tensionLue30);
+  xbee.print("&");  
+  xbee.println("-------");
+  xbee.print("&");
   delay(1000);
 }
