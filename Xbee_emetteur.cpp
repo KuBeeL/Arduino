@@ -3,32 +3,56 @@
 #define entreeAnalogique30 3
 #include <SoftwareSerial.h>
 SoftwareSerial xbee(2, 3);
-int count;
+int nombre = 100;
+int donnees5[100];
+int donnees10[100];
+int donnees30[100];
+
+void acquisition()
+{
+  for (byte i = 0; i <= nombre; i = i + 1) {
+  int valeurLue5 = analogRead(A1);
+  int valeurLue10 = analogRead(A2);
+  int valeurLue30 = analogRead(A3);
+
+  int tensionLue5 = map(valeurLue5, 0, 1023, 0, 500);
+  int tensionLue10 = map(valeurLue10, 0, 1023, 0, 1000);
+  int tensionLue30 = map(valeurLue30, 0, 1023, 0, 3000);
+  /*
+  tensionLue5 = tensionLue5/100.0;
+  tensionLue10 = tensionLue10/100.0;
+  tensionLue30 = tensionLue30/100.0;
+*/
+  donnees5[i] = tensionLue5;
+  donnees10[i] = tensionLue5;
+  donnees30[i] = tensionLue5;
+    
+}
+}
+
 
 void setup()
 {
     xbee.begin(9600);                 
-    Serial.begin(9600);                     
-    count = 0;
+    Serial.begin(9600);
+    acquisition();
+    for (byte i = 0; i < nombre; i = i + 1) {
+    Serial.println(donnees5[i]);
+    }
+    Serial.println("----------");
+    /*
+    Serial.println(donnees5[2]);
+    Serial.println(donnees10[2]);                         
+    Serial.println(donnees30[2]); 
+    */   
 }
 
 void loop()
 {
-  analogWrite(A4, 1023);
-  delay(100);
-  analogWrite(A4, 0);
-  delay(100);
-  int valeurLue5 = analogRead(A1);
-  int valeurLue10 = analogRead(A2);
-  int valeurLue30 = analogRead(A3);
-  Serial.println(valeurLue5);
-  Serial.println(valeurLue10);
-  Serial.println(valeurLue30);
-  Serial.println("----------------");
+  /*
   float tensionLue5 = map(valeurLue5, 0, 1023, 0, 500);
   float tensionLue10 = map(valeurLue10, 0, 1023, 0, 1000);
   float tensionLue30 = map(valeurLue30, 0, 1023, 0, 3000);
-  
   tensionLue5 = tensionLue5/100.0;
   tensionLue10 = tensionLue10/100.0;
   tensionLue30 = tensionLue30/100.0;  
@@ -51,5 +75,6 @@ void loop()
   xbee.print("&");  
   xbee.println("-------");
   xbee.print("&");
-  delay(1000);
+  delay(1000);ù
+  */
 }
