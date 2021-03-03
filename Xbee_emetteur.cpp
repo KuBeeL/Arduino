@@ -4,9 +4,9 @@
 #include <SoftwareSerial.h>
 SoftwareSerial xbee(2, 3);
 int nombre = 100;
-int donnees5[100];
-int donnees10[100];
-int donnees30[100];
+float donnees5[100];
+float donnees10[100];
+float donnees30[100];
 
 void acquisition()
 {
@@ -15,14 +15,14 @@ void acquisition()
   int valeurLue10 = analogRead(A2);
   int valeurLue30 = analogRead(A3);
 
-  int tensionLue5 = map(valeurLue5, 0, 1023, 0, 500);
-  int tensionLue10 = map(valeurLue10, 0, 1023, 0, 1000);
-  int tensionLue30 = map(valeurLue30, 0, 1023, 0, 3000);
-  /*
+  float tensionLue5 = map(valeurLue5, 0, 1023, 0, 500);
+  float tensionLue10 = map(valeurLue10, 0, 1023, 0, 1000);
+  float tensionLue30 = map(valeurLue30, 0, 1023, 0, 3000);
+  
   tensionLue5 = tensionLue5/100.0;
   tensionLue10 = tensionLue10/100.0;
   tensionLue30 = tensionLue30/100.0;
-*/
+
   donnees5[i] = tensionLue5;
   donnees10[i] = tensionLue5;
   donnees30[i] = tensionLue5;
