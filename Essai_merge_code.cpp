@@ -33,33 +33,39 @@ void acquisition() // gère l'acquisition des données pour les mettre dans les 
   tensionLue30 = tensionLue30/100.0;
 
   donnees5[i] = tensionLue5;
-  donnees10[i] = tensionLue5;
-  donnees30[i] = tensionLue5;
+  donnees10[i] = tensionLue10;
+  donnees30[i] = tensionLue30;
   i = i+1;
   nombre = nombre+1;
-  delay(500);    
+  delay(1000);    
 }
 
 void transmission5()
 {
+    Serial.println("----------5V----------");
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
     Serial.println(donnees5[i]);
     xbee.print("&");
     }
+    memset(donnees5, -1, sizeof(donnees5));
 }
 void transmission10()
 {
+    Serial.println("----------10V----------");
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
-    xbee.print(donnees5[i]);
+    Serial.println(donnees10[i]);
     xbee.print("&");
     }
+    memset(donnees10, -1, sizeof(donnees10));
 }
 void transmission30()
 {
+    Serial.println("----------30V----------");
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
-    xbee.print(donnees5[i]);
+    Serial.println(donnees30[i]);
     xbee.print("&");
     }
+    memset(donnees30, -1, sizeof(donnees30));
 }
 
 
@@ -86,20 +92,23 @@ if (etat == WAIT)
 else if (etat== STOP)
 {
   etat=START;
-  Serial.println("Stop");
+  Serial.println("Reset après acquisition");
+  i = 0;
+  nombre = 0;
 }
 else if (etat==START)
 {
   etat = STOP;
-  Serial.println("Start");
+  Serial.println("Transmission");
   transmission5();
+  transmission10();
+  transmission30();
 }
 }
 if (etat==START)
 {
 acquisition();
 Serial.println("Acquisition");
- delay(500);
 }
 else if (etat == STOP)
 {
