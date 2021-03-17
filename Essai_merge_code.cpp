@@ -10,7 +10,7 @@ const int STOP=0;
 const int br=A0;
 const int bp=4;
 
-int nombre = 3; //Nombre de données souhaitées
+int nombre = 0; //Nombre de données souhaitées
 float donnees5[100];
 float donnees10[100];
 float donnees30[100];
@@ -36,13 +36,14 @@ void acquisition() // gère l'acquisition des données pour les mettre dans les 
   donnees10[i] = tensionLue5;
   donnees30[i] = tensionLue5;
   i = i+1;
+  nombre = nombre+1;
   delay(500);    
 }
 
 void transmission5()
 {
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
-    xbee.print(donnees5[i]);
+    Serial.println(donnees5[i]);
     xbee.print("&");
     }
 }
@@ -80,24 +81,30 @@ void loop()
 if (etat == WAIT)
 {
   etat=START;
+  Serial.println("Wait");
 }
 else if (etat== STOP)
 {
   etat=START;
+  Serial.println("Stop");
 }
 else if (etat==START)
 {
   etat = STOP;
+  Serial.println("Start");
+  transmission5();
 }
 }
 if (etat==START)
 {
 acquisition();
+Serial.println("Acquisition");
  delay(500);
 }
 else if (etat == STOP)
 {
   oldEtat=bpstate;
+  //Serial.println("oldetat");
 }
 
 
