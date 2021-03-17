@@ -45,6 +45,7 @@ void transmission5()
     Serial.println("----------5V----------");
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
     Serial.println(donnees5[i]);
+    xbee.print(donnees5[i]);
     xbee.print("&");
     }
     memset(donnees5, -1, sizeof(donnees5));
@@ -54,6 +55,7 @@ void transmission10()
     Serial.println("----------10V----------");
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
     Serial.println(donnees10[i]);
+    xbee.print(donnees10[i]);
     xbee.print("&");
     }
     memset(donnees10, -1, sizeof(donnees10));
@@ -63,6 +65,7 @@ void transmission30()
     Serial.println("----------30V----------");
     for (byte i = 0; i < nombre; i = i + 1) { //print toutes les données 
     Serial.println(donnees30[i]);
+    xbee.print(donnees30[i]);
     xbee.print("&");
     }
     memset(donnees30, -1, sizeof(donnees30));
