@@ -108,6 +108,7 @@ else if (etat==START) //Etat de transmission
   transmission30();
 }
 }
+  
 if (etat==START) //Etat d'acquisition
 {
 acquisition();
